@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
+import { HiOutlineLogin } from "react-icons/hi";
 import toast from "react-hot-toast";
 
 const NavBar = () => {
@@ -75,11 +76,31 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
+          {loading ? (
+            <h1>loading....</h1>
+          ) : (
+            <div>
+              <img
+                className={`h-10 w-10 rounded-full mx-auto ${
+                  user ? " " : "hidden"
+                }`}
+                src={user?.photoURL || "https://via.placeholder.com/88"}
+                alt=""
+              />
+              {/* {console.log(user.photoURL)} */}
+            </div>
+          )}
+
           <button onClick={handleSignout} className="btn">
             {user ? (
-              <Link to={"/login"} >Logout</Link>
+              <Link to={"/login"}>Logout</Link>
             ) : (
-              <Link to={"/login"}>Login</Link>
+              <Link to={"/login"}>
+                <div className="flex  gap-2 items-center">
+                  <span>Login</span>
+                  <HiOutlineLogin />
+                </div>
+              </Link>
             )}
           </button>
         </div>
