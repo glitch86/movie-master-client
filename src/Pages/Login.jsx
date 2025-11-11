@@ -1,17 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { IoEyeOff } from "react-icons/io5";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
+import toast from "react-hot-toast";
 // import bg from '../assets/SimpleShiny.svg';
 
 // console.log(bg);
 
+
 const Login = () => {
+  const { user, setUser, googleSignIn } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
+
+  const location = useLocation();
+  const from = location.state || "/";
+  const navigate = useNavigate();
+
+
   const handleSignin = (e) => {
     e.preventDefault();
+
   };
-  const handleGoogleSignin = () => {};
+  const handleGoogleSignin = () => {
+    googleSignIn()
+    .then((res) => {
+        setUser(res.user);
+        navigate(from);
+        toast.success('Login Successful');
+        
+    })
+    .catch((err) => 
+    console.log(err));
+  };
   return (
     <div className="flex flex-col justify-center items-center h-screen">
       <div>
