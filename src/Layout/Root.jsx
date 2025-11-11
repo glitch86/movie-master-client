@@ -10,7 +10,7 @@ const Root = () => {
       <div className="fixed top-0 w-full z-50">
         <NavBar></NavBar>
       </div>
-      <div className="min-h-screen py-14">
+      <div className="min-h-screen py-24">
         <MyContainer>
           <Outlet></Outlet>
         </MyContainer>

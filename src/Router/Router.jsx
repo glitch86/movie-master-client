@@ -5,6 +5,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AllMovies from "../Pages/AllMovies";
 import MyCollection from "../Pages/MyCollection";
+import PrivateRoutes from "../Private/PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/collection",
-        Component: MyCollection,
+        element: <PrivateRoutes><MyCollection></MyCollection></PrivateRoutes>
       },
       {
         path: "/login",
