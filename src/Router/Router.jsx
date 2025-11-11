@@ -3,6 +3,8 @@ import Root from "../Layout/Root";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import AllMovies from "../Pages/AllMovies";
+import MyCollection from "../Pages/MyCollection";
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +14,14 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: "/movies",
+        Component: AllMovies,
+      },
+      {
+        path: "/collection",
+        Component: MyCollection,
       },
       {
         path: "/login",

@@ -1,7 +1,43 @@
-import React from "react";
-import { NavLink } from "react-router";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
+import toast from "react-hot-toast";
 
 const NavBar = () => {
+  // auth context
+  const { user, setUser, signOutUser, loading } = useContext(AuthContext);
+  console.log("user", user);
+
+  // Nav links
+  const links = (
+    <>
+      <NavLink to="/" className="mr-5">
+        Home
+      </NavLink>
+      <NavLink to="/movies" className="mr-5">
+        All Movies
+      </NavLink>
+      <NavLink
+        to="/collection"
+        className={`mr-5  ${user ? "block" : "hidden"}`}
+      >
+        My Collection
+      </NavLink>
+    </>
+  );
+
+  // handle user signout
+  const handleSignout = () => {
+    signOutUser()
+      .then(() => {
+        toast.success("Signout successful");
+        setUser(null);
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  };
+
   return (
     <div className="bg-black/10 backdrop-blur-sm shadow-sm">
       <div className="navbar container mx-auto">
@@ -28,52 +64,24 @@ const NavBar = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {links}
             </ul>
           </div>
-          <h2 className="btn btn-ghost text-xl"><NavLink to={'/'}>MovieMaster</NavLink></h2>
+          <h2 className="btn btn-ghost text-xl">
+            <NavLink to={"/"}>MovieMaster</NavLink>
+          </h2>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <button className="btn"><NavLink to={'/login'}>Login</NavLink></button>
+          <button onClick={handleSignout} className="btn">
+            {user ? (
+              <Link to={"/login"} >Logout</Link>
+            ) : (
+              <Link to={"/login"}>Login</Link>
+            )}
+          </button>
         </div>
       </div>
     </div>

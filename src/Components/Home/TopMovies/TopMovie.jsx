@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TopMovie = ({data}) => {
-    console.log(data);
+    // console.log(data);
     const {posterUrl, title} = data;
 
     return (
