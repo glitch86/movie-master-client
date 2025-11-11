@@ -9,11 +9,12 @@ import toast from "react-hot-toast";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
-  const { setUser } = useContext(AuthContext);
+  const { setUser, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
   const from = location.state || "/";
   const navigate = useNavigate();
 
+  // sign up with email and pass
   const handleSignUp = (e) => {
     e.preventDefault();
     const displayName = e.target.name?.value;
@@ -45,6 +46,17 @@ const Register = () => {
       .catch((err) => toast.error(err.message));
 
     e.target.reset();
+  };
+
+  // continue with google
+  const handleGoogleSignin = () => {
+    googleSignIn()
+      .then((res) => {
+        setUser(res.user);
+        navigate(from);
+        toast.success("Login Successful.");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -107,7 +119,7 @@ const Register = () => {
           <div className="divider">OR</div>
           <button
             type="button"
-            // onClick={handleGoogleSignin}
+            onClick={handleGoogleSignin}
             className="flex items-center justify-center gap-3 bg-white text-gray-800 px-5 py-2 rounded-lg w-full font-semibold hover:bg-gray-100 transition-colors cursor-pointer my-2"
           >
             <img

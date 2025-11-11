@@ -7,7 +7,7 @@ const TopMovie = ({data}) => {
     return (
         <div className='flex'>
             <div className='flex'>
-                <div className='rotate-270 origin-top-left text-nowrap h-fit'>
+                <div className='rotate-270 origin-bottom-left align-text-top text-nowrap '>
                     {title}
                 </div>
                 <div className='h-60'>

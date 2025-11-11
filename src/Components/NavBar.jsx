@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import { HiOutlineLogin } from "react-icons/hi";
+import { FiLogOut } from "react-icons/fi";
 import toast from "react-hot-toast";
 
 const NavBar = () => {
@@ -91,18 +92,25 @@ const NavBar = () => {
             </div>
           )}
 
-          <button onClick={handleSignout} className="btn">
-            {user ? (
-              <Link to={"/login"}>Logout</Link>
-            ) : (
+          {user ? (
+            <button className="btn" onClick={handleSignout}>
+              <Link to={"/login"}>
+                <div className="flex  gap-2 items-center">
+                  <span>Log Out</span>
+                  <FiLogOut />
+                </div>
+              </Link>
+            </button>
+          ) : (
+            <button className="btn">
               <Link to={"/login"}>
                 <div className="flex  gap-2 items-center">
                   <span>Login</span>
                   <HiOutlineLogin />
                 </div>
               </Link>
-            )}
-          </button>
+            </button>
+          )}
         </div>
       </div>
     </div>
