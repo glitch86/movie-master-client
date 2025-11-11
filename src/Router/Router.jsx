@@ -6,11 +6,14 @@ import Register from "../Pages/Register";
 import AllMovies from "../Pages/AllMovies";
 import MyCollection from "../Pages/MyCollection";
 import PrivateRoutes from "../Private/PrivateRoutes";
+import MovieDetails from "../Pages/MovieDetails";
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -22,7 +25,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/collection",
-        element: <PrivateRoutes><MyCollection></MyCollection></PrivateRoutes>
+        element: (
+          <PrivateRoutes>
+            <MyCollection></MyCollection>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/movies/details",
+        Component: MovieDetails,
       },
       {
         path: "/login",

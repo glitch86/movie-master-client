@@ -25,3 +25,7 @@ body {
 .heading {
   @apply text-2xl font-semibold
 }
+
+.btn {
+  @apply bg-base-200 rounded-lg shadow-none 
+}

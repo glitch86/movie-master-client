@@ -3,12 +3,13 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import { HiOutlineLogin } from "react-icons/hi";
 import { FiLogOut } from "react-icons/fi";
+import dummy from "../assets/eumquaecum.webp"
 import toast from "react-hot-toast";
 
 const NavBar = () => {
   // auth context
   const { user, setUser, signOutUser, loading } = useContext(AuthContext);
-  console.log("user", user);
+  // console.log("user", user);
 
   // Nav links
   const links = (
@@ -80,20 +81,43 @@ const NavBar = () => {
           {loading ? (
             <h1>loading....</h1>
           ) : (
-            <div>
+            <div className="dropdown dropdown-end md:dropdown-center">
               <img
+                tabIndex={0}
+                role="button"
                 className={`h-10 w-10 rounded-full mx-auto ${
                   user ? " " : "hidden"
                 }`}
-                src={user?.photoURL || "https://via.placeholder.com/88"}
+                src={user?.photoURL || dummy}
                 alt=""
               />
+              <ul
+                tabIndex="-1"
+                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+              >
+                <li>
+                  <button
+                    className="btn md:hidden"
+                    onClick={handleSignout}
+                  >
+                    <Link to={"/login"}>
+                      <div className="flex  gap-2 items-center">
+                        <span>Log Out</span>
+                        <FiLogOut />
+                      </div>
+                    </Link>
+                  </button>
+                </li>
+                <li>
+                  <a>Item 2</a>
+                </li>
+              </ul>
               {/* {console.log(user.photoURL)} */}
             </div>
           )}
 
           {user ? (
-            <button className="btn" onClick={handleSignout}>
+            <button className="btn hidden md:block" onClick={handleSignout}>
               <Link to={"/login"}>
                 <div className="flex  gap-2 items-center">
                   <span>Log Out</span>
