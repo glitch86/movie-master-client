@@ -8,6 +8,7 @@ import MyCollection from "../Pages/MyCollection";
 import PrivateRoutes from "../Private/PrivateRoutes";
 import MovieDetails from "../Pages/MovieDetails";
 import ErrorPage from "../Pages/ErrorPage";
+import Update from "../Pages/Update";
 
 export const router = createBrowserRouter([
   {
@@ -32,8 +33,16 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/movies/details",
+        path: "/movies/details/:id",
         Component: MovieDetails,
+      },
+      {
+        path: "/movies/details/update",
+        element: (
+          <PrivateRoutes>
+            <Update></Update>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",

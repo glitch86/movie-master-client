@@ -29,3 +29,11 @@ body {
 .btn {
   @apply bg-base-200 rounded-lg shadow-none 
 }
+
+.delete {
+  @apply bg-red-500 rounded-lg shadow-none 
+}
+
+a.active {
+  text-decoration: underline;
+}

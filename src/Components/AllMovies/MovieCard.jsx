@@ -4,15 +4,15 @@ import { SlCalender } from "react-icons/sl";
 import { Link } from "react-router";
 
 const MovieCard = ({ data }) => {
-  console.log(data);
+  // console.log(data);
 
   const {
+    _id,
     title,
     posterUrl,
     plotSummary,
     rating,
     genre,
-    duration,
     releaseYear,
   } = data;
 
@@ -42,9 +42,7 @@ const MovieCard = ({ data }) => {
             </div>
           </div>
         </div>
-        <button className="btn">
-          <Link to="/movies/details">View Details</Link>
-        </button>
+          <Link className="btn" to={`/movies/details/${_id}`}>View Details</Link>
       </div>
     </div>
   );

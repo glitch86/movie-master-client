@@ -71,7 +71,7 @@ const NavBar = () => {
             </ul>
           </div>
           <h2 className="btn btn-ghost text-xl">
-            <NavLink to={"/"}>MovieMaster</NavLink>
+            <Link to={"/"}>MovieMaster</Link>
           </h2>
         </div>
         <div className="navbar-center hidden lg:flex">
