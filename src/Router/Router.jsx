@@ -9,6 +9,7 @@ import PrivateRoutes from "../Private/PrivateRoutes";
 import MovieDetails from "../Pages/MovieDetails";
 import ErrorPage from "../Pages/ErrorPage";
 import Update from "../Pages/Update";
+import AddMovies from "../Pages/AddMovies";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,14 @@ export const router = createBrowserRouter([
       {
         path: "/movies/details/:id",
         Component: MovieDetails,
+      },
+      {
+        path: "/movies/add",
+        element: (
+          <PrivateRoutes>
+            <AddMovies></AddMovies>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/movies/details/update",

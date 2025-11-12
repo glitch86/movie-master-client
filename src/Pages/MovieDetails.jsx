@@ -23,6 +23,10 @@ const MovieDetails = () => {
     rating,
     releaseYear,
   } = datas;
+
+  if (loading) {
+    return <h1>loading....</h1>;
+  }
   return (
     <div>
       <div>
@@ -44,7 +48,7 @@ const MovieDetails = () => {
                 <span>{duration}</span>
               </div>
             </div>
-             <div className="badge badge-outline">{genre}</div>
+            <div className="badge badge-outline">{genre}</div>
 
             <div className="py-2 grid grid-cols-1 md:grid-cols-4 items-center gap-4">
               <button className="btn wfi flex items-center gap-1">
@@ -56,12 +60,15 @@ const MovieDetails = () => {
                 <FaPlus />
                 <span>Add to List</span>
               </button>
-              <Link to={'/movies/details/update'} className="btn flex items-center gap-1">
+              <Link
+                to={"/movies/details/update"}
+                className="btn flex items-center gap-1"
+              >
                 <RiPencilFill />
 
                 <span>Edit</span>
               </Link>
-                <button className="btn delete flex items-center gap-1">
+              <button className="btn delete flex items-center gap-1">
                 <FaRegTrashAlt />
 
                 <span>Delete</span>
@@ -73,14 +80,37 @@ const MovieDetails = () => {
                 <span className="font-semibold">Plot Summary: </span>
                 {plotSummary}
               </p>
-              <p><span className="font-semibold">Added by: </span>{addedBy}</p>
-              <p><span className="font-semibold">Duration: </span>{duration} mins</p>
-              <p><span className="font-semibold">Country: </span>{country}</p>
-              <p><span className="font-semibold">Director: </span>{director}</p>
-              <p><span className="font-semibold">Language: </span>{language}</p>
-              <p><span className="font-semibold">Casts: </span>{cast}</p>
-              <p><span className="font-semibold">Relaese Year: </span>{releaseYear}</p>
-              <p><span className="font-semibold">Rating: </span> {rating}</p>
+              <p>
+                <span className="font-semibold">Added by: </span>
+                {addedBy}
+              </p>
+              <p>
+                <span className="font-semibold">Duration: </span>
+                {duration} mins
+              </p>
+              <p>
+                <span className="font-semibold">Country: </span>
+                {country}
+              </p>
+              <p>
+                <span className="font-semibold">Director: </span>
+                {director}
+              </p>
+              <p>
+                <span className="font-semibold">Language: </span>
+                {language}
+              </p>
+              <p>
+                <span className="font-semibold">Casts: </span>
+                {cast}
+              </p>
+              <p>
+                <span className="font-semibold">Relaese Year: </span>
+                {releaseYear}
+              </p>
+              <p>
+                <span className="font-semibold">Rating: </span> {rating}
+              </p>
             </div>
             <div className="card-actions justify-end">
               {/* <button className="btn btn-primary">Listen</button> */}
