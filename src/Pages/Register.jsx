@@ -14,6 +14,15 @@ const Register = () => {
   const from = location.state || "/";
   const navigate = useNavigate();
 
+  const addUserToDB = (newUser) => {
+    return fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+  };
   // sign up with email and pass
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -21,6 +30,12 @@ const Register = () => {
     const photoURL = e.target.url?.value;
     const email = e.target.email?.value;
     const password = e.target.password?.value;
+
+    const newUser = {
+      displayName,
+      photoURL,
+      email,
+    };
 
     // console.log(displayName, url, email, password);
     const regExp =
@@ -35,6 +50,10 @@ const Register = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
+        // add user in database
+        addUserToDB(newUser)
+          .then((res) => res.json())
+
         updateProfile(res.user, { displayName, photoURL })
           .then(() => {
             setUser(res.user);
@@ -52,6 +71,16 @@ const Register = () => {
   const handleGoogleSignin = () => {
     googleSignIn()
       .then((res) => {
+        // add user in database
+        const newUser = {
+          name: res.user.displayName,
+          email: res.user.email,
+          image: res.user.photoURL,
+        };
+        addUserToDB(newUser).then((res) => res.json());
+
+        // .then((data) => toast.error(data.message));
+
         setUser(res.user);
         navigate(from);
         toast.success("Login Successful.");
