@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 const CollectionCard = ({ data }) => {
-  const { posterUrl, title } = data;
+  const { posterUrl, title, _id } = data;
   console.log(data);
   return (
     <div>
@@ -19,7 +20,7 @@ const CollectionCard = ({ data }) => {
           </div>
         </div>
         <div className="">
-          <button className="btn bg-green-400 text-white">Edit</button>
+          <Link className="btn bg-green-400 text-white">Edit</Link>
           <button className="btn bg-green-400 text-white">Delete</button>
         </div>
       </div>

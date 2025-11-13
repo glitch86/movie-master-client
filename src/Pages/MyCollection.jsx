@@ -2,6 +2,7 @@ import React, { use } from "react";
 import useData from "../Hooks/useData";
 import { AuthContext } from "../Context/AuthContext";
 import CollectionCard from "../Components/MyCollection/CollectionCard";
+import { Link } from "react-router";
 
 const MyCollection = () => {
   const { user } = use(AuthContext);
@@ -14,6 +15,7 @@ const MyCollection = () => {
   }
   return (
     <div>
+      <Link to={"/movies/add"} className="btn">Add a movie</Link>
       {datas.map((data) => (
         <CollectionCard key={data._id} data={data}></CollectionCard>
       ))}

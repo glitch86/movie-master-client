@@ -61,7 +61,7 @@ const MovieDetails = () => {
                 <span>Add to List</span>
               </button>
               <Link
-                to={"/movies/details/update"}
+                to={`/movies/details/update/${id}`}
                 className="btn flex items-center gap-1"
               >
                 <RiPencilFill />

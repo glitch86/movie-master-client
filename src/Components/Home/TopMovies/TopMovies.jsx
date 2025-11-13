@@ -9,9 +9,11 @@ const TopMovies = ({ datas }) => {
   return (
     <div>
       <h1>Top Rated Movies</h1>
-      <div className="flex">
+      <div className="flex justify-between overflow-x-auto space-x-4">
         {filtered.map((data) => (
-          <TopMovie key={data._id} data={data}></TopMovie>
+          <div key={data._id} className="min-w-[150px] shrink-0">
+            <TopMovie  data={data}></TopMovie>
+          </div>
         ))}
       </div>
     </div>

@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/movies/details/update",
+        path: "/movies/details/update/:id",
         element: (
           <PrivateRoutes>
             <Update></Update>
