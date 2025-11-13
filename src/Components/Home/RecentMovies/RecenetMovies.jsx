@@ -1,14 +1,14 @@
 import React from "react";
-import TopMovie from "./TopMovie";
+import TopMovie from "../TopMovies/TopMovie";
 
-const TopMovies = ({ datas }) => {
-  const filtered = [...datas].sort((a, b) => b.rating - a.rating).slice(0, 5);
-  // console.log(datas);
-
-  // console.log(filtered);
+const RecenetMovies = ({ datas }) => {
+  const filtered = [...datas]
+    .sort((a, b) => b.releaseYear - a.releaseYear)
+    .slice(0, 5);
+//   console.log(filtered);
   return (
-    <div className="my-6">
-      <h1 className="heading">Top Rated Movies</h1>
+    <div>
+      <h1 className="heading">Recently Added</h1>
       <div className="flex justify-between overflow-x-auto space-x-4">
         {filtered.map((data) => (
           <div key={data._id} className="min-w-[150px] shrink-0">
@@ -20,4 +20,4 @@ const TopMovies = ({ datas }) => {
   );
 };
 
-export default TopMovies;
+export default RecenetMovies;

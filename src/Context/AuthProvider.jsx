@@ -38,12 +38,15 @@ const AuthProvider = ({ children }) => {
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {
-        const res = await fetch(`http://localhost:3000/movies/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const res = await fetch(
+          `https://movie-master-server-six.vercel.app/movies/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         const data = await res.json();
         console.log(data);
 

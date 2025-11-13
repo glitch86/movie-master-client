@@ -21,11 +21,11 @@
 }
 
 .heading {
-  @apply text-2xl font-semibold
+  @apply text-2xl font-semibold my-5
 }
 
 .btn {
-  @apply bg-purple-500 outline-none rounded-lg shadow-none 
+  @apply bg-purple-500  rounded-lg shadow-none 
 }
 
 .delete {

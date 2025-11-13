@@ -7,7 +7,7 @@ import dummy from "../assets/eumquaecum.webp";
 import toast from "react-hot-toast";
 
 const NavBar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // auth context
   const { user, setUser, signOutUser, loading } = useContext(AuthContext);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -47,7 +47,7 @@ const NavBar = () => {
       .then(() => {
         toast.success("Signout successful");
         setUser(null);
-        navigate('/')
+        navigate("/");
       })
       .catch((e) => {
         toast.error(e.message);
@@ -58,31 +58,41 @@ const NavBar = () => {
     <div className="bg-black/10 backdrop-blur-sm shadow-sm">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className=" lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
+          <div className="drawer md:hidden">
+            <input id="my-drawer-1" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
+              {/* Page content here */}
+              <label htmlFor="my-drawer-1" className=" drawer-button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {" "}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />{" "}
+                </svg>
+              </label>
             </div>
-            <ul
-              tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              {links}
-            </ul>
+            <div className="drawer-side">
+              <label
+                htmlFor="my-drawer-1"
+                aria-label="close sidebar"
+                className="drawer-overlay"
+              ></label>
+              <ul className="menu bg-black/10 backdrop-blur-sm shadow-sm min-h-full w-44 p-4">
+                {/* Sidebar content here */}
+                {links}
+              </ul>
+            </div>
           </div>
+
           <h2 className=" text-xl">
             <Link to={"/"}>MovieMaster</Link>
           </h2>
@@ -125,7 +135,7 @@ const NavBar = () => {
                   <Link to={"/movies/add"}>Add Movies</Link>
                 </li>
                 <li>
-                  <Link to={"/watchlist"}>Watch List</Link>
+                  <Link to={"/watchlist"}>WatchList</Link>
                 </li>
                 <input
                   onChange={(e) => handleTheme(e.target.checked)}

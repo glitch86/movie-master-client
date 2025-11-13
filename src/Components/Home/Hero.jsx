@@ -5,7 +5,7 @@ import MovieSlider from "./MovieSlider";
 const Hero = ({ datas }) => {
   // console.log(datas, posterUrl);
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,

@@ -17,7 +17,11 @@ const MovieDetails = () => {
   );
   // console.log(datas);
   if (loading) {
-    return <h1>loading....</h1>;
+    return (
+      <div className="min-h-screen flex justify-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
   }
 
   const {
@@ -43,7 +47,7 @@ const MovieDetails = () => {
     };
     // console.log(movieInfo);
 
-    fetch("http://localhost:3000/watchlist/add", {
+    fetch("https://movie-master-server-six.vercel.app/watchlist/add", {
       method: "POST",
       headers: {
         "content-type": "application/json",
