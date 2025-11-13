@@ -1,10 +1,12 @@
 import React, { use } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const AddMovie = () => {
   const { user } = use(AuthContext);
-  console.log(user.email);
+  // console.log(user.email);
+  const navigate = useNavigate();
 
   const handleAddMovie = (e) => {
     e.preventDefault();
@@ -43,6 +45,7 @@ const AddMovie = () => {
 
     // console.log(newMovie);
     form.reset();
+    navigate("/movies");
   };
 
   return (
