@@ -86,7 +86,7 @@ const NavBar = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <ul className="menu bg-black/10 backdrop-blur-sm shadow-sm min-h-full w-44 p-4">
+              <ul className="menu text-white bg-black/10 backdrop-blur-sm shadow-sm min-h-full w-44 p-4">
                 {/* Sidebar content here */}
                 {links}
               </ul>
