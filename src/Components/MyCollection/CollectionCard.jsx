@@ -1,18 +1,15 @@
 import React, { use } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
 
 const CollectionCard = ({ data }) => {
   const { deleteMovie } = use(AuthContext);
-    const navigate = useNavigate();
 
   const { posterUrl, title, _id } = data;
   // console.log(data);
 
   const handleDelete = () => {
-    deleteMovie(_id).then(() => {
-      navigate("/movies");
-    });
+    deleteMovie(_id);
   };
   return (
     <div>
@@ -36,7 +33,12 @@ const CollectionCard = ({ data }) => {
           >
             Edit
           </Link>
-          <button onClick={handleDelete} className="btn bg-green-400 text-white">Delete</button>
+          <button
+            onClick={handleDelete}
+            className="btn bg-green-400 text-white"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

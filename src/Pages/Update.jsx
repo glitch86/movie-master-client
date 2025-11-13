@@ -52,10 +52,11 @@ const Update = () => {
       country: form.country.value,
     };
 
-    fetch(`http://localhost:3000/movies/update/${id}`, {
+    fetch(`https://movie-master-server-six.vercel.app/movies/update/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${user.accessToken}`,
       },
       body: JSON.stringify(formData),
     })

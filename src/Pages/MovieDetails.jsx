@@ -11,7 +11,7 @@ const MovieDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   // console.log(id);
-  const { datas, loading } = useData(`http://localhost:3000/movies/${id}`);
+  const { datas, loading } = useData(`https://movie-master-server-six.vercel.app/movies/${id}`);
   // console.log(datas);
   if (loading) {
     return <h1>loading....</h1>;

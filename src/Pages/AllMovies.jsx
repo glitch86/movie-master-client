@@ -4,7 +4,7 @@ import MovieCard from "../Components/AllMovies/MovieCard";
 import TopMovieCard from "../Components/AllMovies/TopMovieCard";
 
 const AllMovies = () => {
-  const { datas, loading } = useData("http://localhost:3000/movies");
+  const { datas, loading } = useData("https://movie-master-server-six.vercel.app/movies");
   const filtered = [...datas].sort((a, b) => b.rating - a.rating).slice(0, 10);
   if (loading) {
     return <h1>loading....</h1>;

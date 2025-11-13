@@ -6,7 +6,7 @@ import TopMovies from '../Components/Home/TopMovies/TopMovies';
 
 
 const Home = () => {
-    const { datas, loading } = useData("http://localhost:3000/movies");
+    const { datas, loading } = useData("https://movie-master-server-six.vercel.app/movies");
     if(loading){
         return<h1>loading....</h1>
     }

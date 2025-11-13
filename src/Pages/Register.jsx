@@ -39,7 +39,7 @@ const Register = () => {
 
     // console.log(displayName, url, email, password);
     const regExp =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()\-_=+])[A-Za-z\d@$!%*?&#^()\-_=+]{6,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
     if (!regExp.test(password)) {
       toast.error(
