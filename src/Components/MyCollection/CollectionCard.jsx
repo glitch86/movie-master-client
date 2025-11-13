@@ -20,7 +20,12 @@ const CollectionCard = ({ data }) => {
           </div>
         </div>
         <div className="">
-          <Link className="btn bg-green-400 text-white">Edit</Link>
+          <Link
+            to={`/movies/details/update/${_id}`}
+            className="btn bg-green-400 text-white"
+          >
+            Edit
+          </Link>
           <button className="btn bg-green-400 text-white">Delete</button>
         </div>
       </div>

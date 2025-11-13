@@ -1,14 +1,21 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, useParams } from "react-router";
 import useData from "../Hooks/useData";
 import { FaClock, FaPlay, FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import { RiPencilFill } from "react-icons/ri";
+import { AuthContext } from "../Context/AuthContext";
 
 const MovieDetails = () => {
+  const { user } = use(AuthContext);
+
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const { datas, loading } = useData(`http://localhost:3000/movies/${id}`);
-  console.log(datas);
+  // console.log(datas);
+  if (loading) {
+    return <h1>loading....</h1>;
+  }
+
   const {
     title,
     posterUrl,
@@ -24,9 +31,8 @@ const MovieDetails = () => {
     releaseYear,
   } = datas;
 
-  if (loading) {
-    return <h1>loading....</h1>;
-  }
+  const owner = addedBy === user.email ? true : false;
+  // console.log(owner);
   return (
     <div>
       <div>
@@ -62,13 +68,19 @@ const MovieDetails = () => {
               </button>
               <Link
                 to={`/movies/details/update/${id}`}
-                className="btn flex items-center gap-1"
+                className={`btn flex items-center gap-1 ${
+                  !owner ? "hidden" : ""
+                }`}
               >
                 <RiPencilFill />
 
                 <span>Edit</span>
               </Link>
-              <button className="btn delete flex items-center gap-1">
+              <button
+                className={`btn delete flex items-center gap-1 ${
+                  !owner ? "hidden" : ""
+                }`}
+              >
                 <FaRegTrashAlt />
 
                 <span>Delete</span>
