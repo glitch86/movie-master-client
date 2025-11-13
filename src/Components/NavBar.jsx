@@ -1,14 +1,26 @@
-import React, { useContext } from "react";
-import { Link, NavLink } from "react-router";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import { HiOutlineLogin } from "react-icons/hi";
 import { FiLogOut } from "react-icons/fi";
-import dummy from "../assets/eumquaecum.webp"
+import dummy from "../assets/eumquaecum.webp";
 import toast from "react-hot-toast";
 
 const NavBar = () => {
+  const navigate = useNavigate()
   // auth context
   const { user, setUser, signOutUser, loading } = useContext(AuthContext);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
   // console.log("user", user);
 
   // Nav links
@@ -35,6 +47,7 @@ const NavBar = () => {
       .then(() => {
         toast.success("Signout successful");
         setUser(null);
+        navigate('/')
       })
       .catch((e) => {
         toast.error(e.message);
@@ -46,7 +59,7 @@ const NavBar = () => {
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className=" lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -70,7 +83,7 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <h2 className="btn btn-ghost text-xl">
+          <h2 className=" text-xl">
             <Link to={"/"}>MovieMaster</Link>
           </h2>
         </div>
@@ -96,10 +109,7 @@ const NavBar = () => {
                 className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
               >
                 <li>
-                  <button
-                    className="btn md:hidden"
-                    onClick={handleSignout}
-                  >
+                  <button className="btn md:hidden" onClick={handleSignout}>
                     <Link to={"/login"}>
                       <div className="flex  gap-2 items-center">
                         <span>Log Out</span>
@@ -109,8 +119,20 @@ const NavBar = () => {
                   </button>
                 </li>
                 <li>
-                  <a>Item 2</a>
+                  <a>Profile</a>
                 </li>
+                <li>
+                  <Link to={"/movies/add"}>Add Movies</Link>
+                </li>
+                <li>
+                  <Link to={"/watchlist"}>Watch List</Link>
+                </li>
+                <input
+                  onChange={(e) => handleTheme(e.target.checked)}
+                  type="checkbox"
+                  defaultChecked={localStorage.getItem("theme") === "dark"}
+                  className="toggle"
+                />
               </ul>
               {/* {console.log(user.photoURL)} */}
             </div>

@@ -4,6 +4,7 @@ import useData from "../Hooks/useData";
 import { FaClock, FaPlay, FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import { RiPencilFill } from "react-icons/ri";
 import { AuthContext } from "../Context/AuthContext";
+import toast from "react-hot-toast";
 
 const MovieDetails = () => {
   const { user, deleteMovie } = use(AuthContext);
@@ -11,13 +12,16 @@ const MovieDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   // console.log(id);
-  const { datas, loading } = useData(`https://movie-master-server-six.vercel.app/movies/${id}`);
+  const { datas, loading } = useData(
+    `https://movie-master-server-six.vercel.app/movies/${id}`
+  );
   // console.log(datas);
   if (loading) {
     return <h1>loading....</h1>;
   }
 
   const {
+    _id,
     title,
     posterUrl,
     addedBy,
@@ -31,6 +35,30 @@ const MovieDetails = () => {
     rating,
     releaseYear,
   } = datas;
+
+  const handleWatchList = () => {
+    const movieInfo = {
+      movie_id: _id,
+      email: user.email,
+    };
+    // console.log(movieInfo);
+
+    fetch("http://localhost:3000/watchlist/add", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(movieInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success(data.message);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleDelete = () => {
     deleteMovie(id).then(() => {
@@ -68,7 +96,10 @@ const MovieDetails = () => {
                 <span>Watch now</span>
               </button>
 
-              <button className="btn flex items-center gap-1">
+              <button
+                onClick={handleWatchList}
+                className="btn flex items-center gap-1"
+              >
                 <FaPlus />
                 <span>Add to List</span>
               </button>

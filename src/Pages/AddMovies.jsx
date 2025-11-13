@@ -41,7 +41,7 @@ const AddMovie = () => {
         console.log(data);
       })
       .catch((err) => {
-        console.log("errorrr", err);
+        console.log(err);
       });
 
     // console.log(newMovie);

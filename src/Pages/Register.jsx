@@ -15,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const addUserToDB = (newUser) => {
-    return fetch("http://localhost:3000/users", {
+    return fetch("https://movie-master-server-six.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -43,7 +43,7 @@ const Register = () => {
 
     if (!regExp.test(password)) {
       toast.error(
-        "Password must be at least 6 characters long and must include both lower and uppercase and special character"
+        "Password must be at least 6 characters long and must include both lower and uppercase"
       );
       return;
     }
@@ -73,9 +73,9 @@ const Register = () => {
       .then((res) => {
         // add user in database
         const newUser = {
-          name: res.user.displayName,
+          displayName: res.user.displayName,
           email: res.user.email,
-          image: res.user.photoURL,
+          photoURL: res.user.photoURL,
         };
         addUserToDB(newUser).then((res) => res.json());
 

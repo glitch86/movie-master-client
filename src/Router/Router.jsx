@@ -10,6 +10,7 @@ import MovieDetails from "../Pages/MovieDetails";
 import ErrorPage from "../Pages/ErrorPage";
 import Update from "../Pages/Update";
 import AddMovies from "../Pages/AddMovies";
+import WatchList from "../Pages/WatchList";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <Update></Update>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/watchlist",
+        element: (
+          <PrivateRoutes>
+            <WatchList></WatchList>
           </PrivateRoutes>
         ),
       },

@@ -4,19 +4,17 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 
-@plugin "daisyui";
-@plugin "daisyui/theme" {
-  name: "light";
-  default: true;
-  --color-primary: blue;
-  --color-secondary: teal;
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
 }
 
-body {
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* body {
   background-image: url('/SimpleShiny.svg');
   background-size: cover;
   background-position: center;
-}
+} */
 
 * {
   font-family: "Poppins", sans-serif;
@@ -27,7 +25,7 @@ body {
 }
 
 .btn {
-  @apply bg-base-200 rounded-lg shadow-none 
+  @apply bg-purple-500 outline-none rounded-lg shadow-none 
 }
 
 .delete {

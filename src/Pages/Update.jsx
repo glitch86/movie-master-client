@@ -12,7 +12,7 @@ const Update = () => {
   const { id } = useParams();
   //   console.log(id);
   const { datas, loading } = useData(`http://localhost:3000/movies/${id}`);
-  console.log(datas);
+  // console.log(datas);
   if (loading) {
     return <h1>loading....</h1>;
   }
