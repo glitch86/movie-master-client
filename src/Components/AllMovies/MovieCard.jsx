@@ -17,7 +17,7 @@ const MovieCard = ({ data }) => {
   } = data;
 
   return (
-    <div className="card bg-base-100 w-72 shadow-sm mx-auto">
+    <div className="card bg-base-100 w-72 shadow-sm mx-auto hover:-translate-y-3 transition-transform border">
       <figure className="h-80 object-cover">
         <img src={posterUrl} alt="Shoes" />
       </figure>

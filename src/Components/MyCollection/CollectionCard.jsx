@@ -13,7 +13,7 @@ const CollectionCard = ({ data }) => {
   };
   return (
     <div>
-      <div className="flex items-center rounded-xl bg-base-100 shadow-sm my-6 p-4">
+      <div className="flex items-center rounded-xl bg-base-100 shadow-sm my-6 p-4 border">
         <figure className=" h-[60px]">
           <img className="rounded-lg h-full" src={posterUrl} alt={title} />
         </figure>

@@ -6,9 +6,9 @@ import TopMovieCard from "../Components/AllMovies/TopMovieCard";
 const AllMovies = () => {
   const { datas, loading } = useData("https://movie-master-server-six.vercel.app/movies");
   const filtered = [...datas].sort((a, b) => b.rating - a.rating).slice(0, 10);
-  if (loading) {
-    return <h1>loading....</h1>;
-  }
+ if(loading){
+        return <div className='min-h-screen flex justify-center'><span className="loading loading-spinner loading-xl"></span></div>
+    }
   //   console.log(datas);
   return (
     <div >

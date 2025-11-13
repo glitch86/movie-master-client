@@ -15,7 +15,11 @@ const MyCollection = () => {
   );
   // console.log(datas);
   if (loading) {
-    return <h1>loading....</h1>;
+    return (
+      <div className="min-h-screen flex justify-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
   }
   return (
     <div className="h-screen">
