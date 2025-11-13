@@ -1,12 +1,14 @@
 import React, { use } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import useData from "../Hooks/useData";
 import { FaClock, FaPlay, FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import { RiPencilFill } from "react-icons/ri";
 import { AuthContext } from "../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const MovieDetails = () => {
   const { user } = use(AuthContext);
+  const navigate = useNavigate()
 
   const { id } = useParams();
   // console.log(id);
@@ -30,6 +32,40 @@ const MovieDetails = () => {
     rating,
     releaseYear,
   } = datas;
+  const handleDlete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/movies/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            navigate("/movies");
+
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
+  };
 
   const owner = addedBy === user.email ? true : false;
   // console.log(owner);
@@ -80,6 +116,7 @@ const MovieDetails = () => {
                 className={`btn delete flex items-center gap-1 ${
                   !owner ? "hidden" : ""
                 }`}
+                onClick={handleDlete}
               >
                 <FaRegTrashAlt />
 
