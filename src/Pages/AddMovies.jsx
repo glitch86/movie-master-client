@@ -27,7 +27,7 @@ const AddMovie = () => {
       addedBy: form.addedBy.value,
     };
 
-    fetch("https://movie-master-server-six.vercel.app/movies/add", {
+    fetch("http://localhost:3000/movies/add", {
       method: "POST",
       headers: {
         "content-type": "application/json",

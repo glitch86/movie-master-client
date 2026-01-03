@@ -4,7 +4,7 @@ import MovieCard from "../Components/AllMovies/MovieCard";
 import TopMovieCard from "../Components/AllMovies/TopMovieCard";
 
 const AllMovies = () => {
-  const { datas, loading } = useData("https://movie-master-server-six.vercel.app/movies");
+  const { datas, loading } = useData("http://localhost:3000/movies");
   const filtered = [...datas].sort((a, b) => b.rating - a.rating).slice(0, 10);
  if(loading){
         return <div className='min-h-screen flex justify-center'><span className="loading loading-spinner loading-xl"></span></div>
@@ -16,7 +16,7 @@ const AllMovies = () => {
         <div>
           <h1 className="heading py-5">All movies</h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-4 gap-5">
             {datas.map((data) => (
               <MovieCard key={data._id} data={data}></MovieCard>
             ))}

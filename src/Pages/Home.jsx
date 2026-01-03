@@ -6,14 +6,15 @@ import Stats from "../Components/Home/stats";
 import RecenetMovies from "../Components/Home/RecentMovies/RecenetMovies";
 import Genres from "../Components/Home/Genres";
 import About from "../Components/Home/About";
+import Faq from "../Components/Home/FAQ/Faq";
 
-const users = fetch("https://movie-master-server-six.vercel.app/users").then(
+const users = fetch("http://localhost:3000/users").then(
   (res) => res.json()
 );
 
 const Home = () => {
   const { datas, loading } = useData(
-    "https://movie-master-server-six.vercel.app/movies"
+    "http://localhost:3000/movies"
   );
   if (loading) {
     return (
@@ -26,10 +27,11 @@ const Home = () => {
     <div>
       <Hero datas={datas}></Hero>
       <Stats users={users} datas={datas}></Stats>
-      <TopMovies datas={datas}></TopMovies>
+      <TopMovies></TopMovies>
       <RecenetMovies datas={datas}></RecenetMovies>
       <Genres></Genres>
       <About></About>
+      <Faq></Faq>
     </div>
   );
 };

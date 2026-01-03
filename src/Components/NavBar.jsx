@@ -22,9 +22,7 @@ const NavBar = () => {
       <NavLink to="/movies" className="mr-5">
         All Movies
       </NavLink>
-      <NavLink to="/about" className="mr-5">
-        About Us
-      </NavLink>
+
       <NavLink
         to="/collection"
         className={`mr-5  ${user ? "block" : "hidden"}`}
@@ -33,6 +31,9 @@ const NavBar = () => {
       </NavLink>
       <NavLink to="/watchlist" className={`mr-5  ${user ? "block" : "hidden"}`}>
         Watchlist
+      </NavLink>
+      <NavLink to="/about" className="mr-5">
+        About Us
       </NavLink>
     </>
   );
@@ -81,9 +82,7 @@ const NavBar = () => {
                 htmlFor="my-drawer-1"
                 aria-label="close sidebar"
                 className="drawer-overlay"
-              >
-                
-              </label>
+              ></label>
               <ul className="menu text-white bg-black/10 backdrop-blur-sm shadow-sm min-h-full w-44 p-4">
                 {/* Sidebar content here */}
                 <li className="text-xl border-b-2 mb-4">Navigate</li>

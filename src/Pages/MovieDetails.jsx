@@ -1,10 +1,11 @@
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import useData from "../Hooks/useData";
 import { FaClock, FaPlay, FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import { RiPencilFill } from "react-icons/ri";
 import { AuthContext } from "../Context/AuthContext";
 import toast from "react-hot-toast";
+import TopMovies from "../Components/Home/TopMovies/TopMovies";
 
 const MovieDetails = () => {
   const { user, deleteMovie } = use(AuthContext);
@@ -12,8 +13,9 @@ const MovieDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   // console.log(id);
+
   const { datas, loading } = useData(
-    `https://movie-master-server-six.vercel.app/movies/${id}`
+    `http://localhost:3000/movies/${id}`
   );
   // console.log(datas);
   if (loading) {
@@ -47,7 +49,7 @@ const MovieDetails = () => {
     };
     // console.log(movieInfo);
 
-    fetch("https://movie-master-server-six.vercel.app/watchlist/add", {
+    fetch("http://localhost:3000/watchlist/add", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -171,6 +173,11 @@ const MovieDetails = () => {
             </div>
           </div>
         </div>
+      </div>
+
+
+      <div>
+        <TopMovies></TopMovies>
       </div>
     </div>
   );
