@@ -5,22 +5,12 @@ import { HiOutlineLogin } from "react-icons/hi";
 import { FiLogOut } from "react-icons/fi";
 import dummy from "../assets/eumquaecum.webp";
 import toast from "react-hot-toast";
+import ThemeToggle from "../Hooks/ThemeToggle";
 
 const NavBar = () => {
   const navigate = useNavigate();
   // auth context
   const { user, setUser, signOutUser, loading } = useContext(AuthContext);
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-
-  useEffect(() => {
-    const html = document.querySelector("html");
-    html.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const handleTheme = (checked) => {
-    setTheme(checked ? "dark" : "light");
-  };
   // console.log("user", user);
 
   // Nav links
@@ -32,11 +22,17 @@ const NavBar = () => {
       <NavLink to="/movies" className="mr-5">
         All Movies
       </NavLink>
+      <NavLink to="/about" className="mr-5">
+        About Us
+      </NavLink>
       <NavLink
         to="/collection"
         className={`mr-5  ${user ? "block" : "hidden"}`}
       >
         My Collection
+      </NavLink>
+      <NavLink to="/watchlist" className={`mr-5  ${user ? "block" : "hidden"}`}>
+        Watchlist
       </NavLink>
     </>
   );
@@ -85,9 +81,12 @@ const NavBar = () => {
                 htmlFor="my-drawer-1"
                 aria-label="close sidebar"
                 className="drawer-overlay"
-              ></label>
+              >
+                
+              </label>
               <ul className="menu text-white bg-black/10 backdrop-blur-sm shadow-sm min-h-full w-44 p-4">
                 {/* Sidebar content here */}
+                <li className="text-xl border-b-2 mb-4">Navigate</li>
                 {links}
               </ul>
             </div>
@@ -104,7 +103,7 @@ const NavBar = () => {
           {loading ? (
             <h1>loading....</h1>
           ) : (
-            <div className="dropdown dropdown-end md:dropdown-center">
+            <div className="dropdown dropdown-end">
               <img
                 tabIndex={0}
                 role="button"
@@ -113,13 +112,20 @@ const NavBar = () => {
                 }`}
                 src={user?.photoURL || dummy}
                 alt=""
+                referrerPolicy="no-referrer"
               />
               <ul
                 tabIndex="-1"
                 className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
               >
                 <li>
-                  <button className="btn md:hidden" onClick={handleSignout}>
+                  <a>Profile</a>
+                </li>
+                <li>
+                  <Link to={"/movies/add"}>Add Movies</Link>
+                </li>
+                <li>
+                  <button className="btn" onClick={handleSignout}>
                     <Link to={"/login"}>
                       <div className="flex  gap-2 items-center">
                         <span>Log Out</span>
@@ -128,45 +134,21 @@ const NavBar = () => {
                     </Link>
                   </button>
                 </li>
-                <li>
-                  <a>Profile</a>
-                </li>
-                <li>
-                  <Link to={"/movies/add"}>Add Movies</Link>
-                </li>
-                <li>
-                  <Link to={"/watchlist"}>WatchList</Link>
-                </li>
-                <input
-                  onChange={(e) => handleTheme(e.target.checked)}
-                  type="checkbox"
-                  defaultChecked={localStorage.getItem("theme") === "dark"}
-                  className="toggle"
-                />
               </ul>
               {/* {console.log(user.photoURL)} */}
             </div>
           )}
-
-          {user ? (
-            <button className="btn hidden md:block" onClick={handleSignout}>
-              <Link to={"/login"}>
-                <div className="flex  gap-2 items-center">
-                  <span>Log Out</span>
-                  <FiLogOut />
-                </div>
-              </Link>
-            </button>
-          ) : (
-            <button className="btn">
-              <Link to={"/login"}>
-                <div className="flex  gap-2 items-center">
-                  <span>Login</span>
-                  <HiOutlineLogin />
-                </div>
-              </Link>
-            </button>
-          )}
+          <button className={` ${!user ? "btn" : "hidden"}`}>
+            <Link to={"/login"}>
+              <div className="flex  gap-2 items-center">
+                <span>Login</span>
+                <HiOutlineLogin />
+              </div>
+            </Link>
+          </button>
+          <div className="mx-3">
+            <ThemeToggle></ThemeToggle>
+          </div>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ const Hero = ({ datas }) => {
     autoplaySpeed: 2000,
   };
   return (
-    <div className="max-w-4xl max-h-fit mx-auto mt-8">
+    <div className="max-w-4xl max-h-3/5 mx-auto">
       <Slider {...settings}>
         {datas.map((data) => (
          <MovieSlider data={data}></MovieSlider>

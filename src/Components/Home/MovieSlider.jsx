@@ -22,8 +22,8 @@ const MovieSlider = ({ data }) => {
           alt={title}
         />
         <div>
-          <h1 className="text-5xl font-bold">{title}</h1>
-          <p className="py-6">{plotSummary}</p>
+          <h1 className="text-2xl md:text-5xl font-bold">{title}</h1>
+          <p className="py-6 hidden md:block">{plotSummary}</p>
           <div className="flex items-center gap-6">
             <div className="flex text-lg items-center gap-1">
               <CiClock2 />

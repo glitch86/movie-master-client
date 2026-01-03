@@ -11,6 +11,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import Update from "../Pages/Update";
 import AddMovies from "../Pages/AddMovies";
 import WatchList from "../Pages/WatchList";
+import AboutUs from "../Pages/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "/movies",
         Component: AllMovies,
+      },
+      {
+        path: "/about",
+        Component: AboutUs,
       },
       {
         path: "/collection",
