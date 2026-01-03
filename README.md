@@ -18,7 +18,7 @@ MovieMaster is your ultimate movie discovery and management platform — designe
 
 ## Dependencies
 
-- React ^18.2.0
+- React ^19.1.1
 - Tailwind CSS ^3.4.0
 - DaisyUI ^4.0.2
 - react-router ^7.9.5
