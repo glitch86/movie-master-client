@@ -7,6 +7,7 @@ import RecenetMovies from "../Components/Home/RecentMovies/RecenetMovies";
 import Genres from "../Components/Home/Genres";
 import About from "../Components/Home/About";
 import Faq from "../Components/Home/FAQ/Faq";
+import Testimonials from "../Components/Home/Testimonials/Testimonials";
 
 const users = fetch("http://localhost:3000/users").then(
   (res) => res.json()
@@ -32,6 +33,7 @@ const Home = () => {
       <Genres></Genres>
       <About></About>
       <Faq></Faq>
+      <Testimonials></Testimonials>
     </div>
   );
 };

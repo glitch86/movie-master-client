@@ -3,7 +3,15 @@ import useData from "../../../Hooks/useData";
 
 const Faq = () => {
   const { datas, loading } = useData("http://localhost:3000/faqs");
-  console.log(datas);
+  // console.log(datas);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  }
   return (
     <div>
       <h1 className="heading">Frequently Asked (FAQ)</h1>
