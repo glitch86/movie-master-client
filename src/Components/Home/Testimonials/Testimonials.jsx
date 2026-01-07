@@ -24,7 +24,7 @@ const Testimonials = () => {
         <Marquee>
           {testimonials.map((testimonial) => {
             return (
-              <TestimonialCard testimonial={testimonial}></TestimonialCard>
+              <TestimonialCard key={testimonial._id} testimonial={testimonial}></TestimonialCard>
             );
           })}
         </Marquee>

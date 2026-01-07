@@ -8,15 +8,12 @@ import Genres from "../Components/Home/Genres";
 import About from "../Components/Home/About";
 import Faq from "../Components/Home/FAQ/Faq";
 import Testimonials from "../Components/Home/Testimonials/Testimonials";
+import Blogs from "../Components/Home/Blogs/Blogs";
 
-const users = fetch("http://localhost:3000/users").then(
-  (res) => res.json()
-);
+const users = fetch("http://localhost:3000/users").then((res) => res.json());
 
 const Home = () => {
-  const { datas, loading } = useData(
-    "http://localhost:3000/movies"
-  );
+  const { datas, loading } = useData("http://localhost:3000/movies");
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center">
@@ -34,6 +31,7 @@ const Home = () => {
       <About></About>
       <Faq></Faq>
       <Testimonials></Testimonials>
+      <Blogs></Blogs>
     </div>
   );
 };

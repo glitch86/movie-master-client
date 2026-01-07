@@ -3,7 +3,7 @@ import { FaThumbsUp } from "react-icons/fa6";
 
 const TestimonialCard = ({ testimonial }) => {
   const { imgUrl, username, date, comment, usefulCount } = testimonial;
-  console.log(testimonial);
+  // console.log(testimonial);
 
   return (
     <div className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow duration-300">
