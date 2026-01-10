@@ -13,6 +13,8 @@ import AddMovies from "../Pages/AddMovies";
 import WatchList from "../Pages/WatchList";
 import AboutUs from "../Pages/AboutUs";
 import DashboardLayout from "../Layout/DashboardLayout";
+import UserProfile from "../Pages/Dashboard/UserProfile";
+import OverView from "../Pages/Dashboard/OverView";
 
 export const router = createBrowserRouter([
   {
@@ -85,5 +87,15 @@ export const router = createBrowserRouter([
         <DashboardLayout></DashboardLayout>
       </PrivateRoutes>
     ),
+    children: [
+      {
+        index: true,
+        Component: OverView,
+      },
+      {
+        path: "/dashboard/profile",
+        Component: UserProfile,
+      },
+    ],
   },
 ]);

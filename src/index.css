@@ -43,10 +43,10 @@
 }
 
 a.active {
-  text-decoration: underline;
+  @apply bg-primary text-black py-2 px-3 rounded;
 }
 
 .slick-prev:before,
 .slick-next:before {
-  @apply text-gray-500
+  @apply text-gray-500;
 }
