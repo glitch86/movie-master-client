@@ -9,6 +9,7 @@ import About from "../Components/Home/About";
 import Faq from "../Components/Home/FAQ/Faq";
 import Testimonials from "../Components/Home/Testimonials/Testimonials";
 import Blogs from "../Components/Home/Blogs/Blogs";
+import PremiumSection from "../Components/Home/PremiumSection/PremiumSection";
 
 const users = fetch("http://localhost:3000/users").then((res) => res.json());
 
@@ -32,6 +33,7 @@ const Home = () => {
       <Faq></Faq>
       <Testimonials></Testimonials>
       <Blogs></Blogs>
+      <PremiumSection></PremiumSection>
     </div>
   );
 };

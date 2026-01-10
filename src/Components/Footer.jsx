@@ -1,31 +1,22 @@
 import React from "react";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
     <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
       <nav className="grid grid-flow-col gap-4">
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Press kit</a>
+        <Link to={'/about'} className="link link-hover">About us</Link>
       </nav>
       <nav>
         <div className="grid grid-flow-col gap-4">
-          <a>
+          <a href="https://x.com/JunaitP" target="_blank">
             <FaXTwitter className=" size-6"/>
           </a>
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current"
-            >
-              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-            </svg>
+          <a href="https://www.linkedin.com/in/polok-ahmed/" target="_blank">
+            <FaLinkedin size={21}></FaLinkedin>
           </a>
-          <a>
+          <a href="https://www.facebook.com/junaitislam.polokz" target="_blank">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

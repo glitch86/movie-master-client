@@ -121,6 +121,9 @@ const NavBar = () => {
                   <a>Profile</a>
                 </li>
                 <li>
+                  <Link to={"/dashboard"}>Dashboard</Link>
+                </li>
+                <li>
                   <Link to={"/movies/add"}>Add Movies</Link>
                 </li>
                 <li>

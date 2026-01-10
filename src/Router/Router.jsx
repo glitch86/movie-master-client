@@ -12,6 +12,7 @@ import Update from "../Pages/Update";
 import AddMovies from "../Pages/AddMovies";
 import WatchList from "../Pages/WatchList";
 import AboutUs from "../Pages/AboutUs";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -76,5 +77,13 @@ export const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoutes>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoutes>
+    ),
   },
 ]);
