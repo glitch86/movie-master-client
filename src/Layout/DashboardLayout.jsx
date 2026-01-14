@@ -55,7 +55,7 @@ const DashboardLayout = () => {
                 <path d="M14 10l2 2l-2 2"></path>
               </svg>
             </label>
-            <div className="px-4">Movie Master</div>
+            <div className="px-4"><Link to={"/"}>Movie Master</Link></div>
           </div>
 
           <div className="mx-5 flex gap-4">

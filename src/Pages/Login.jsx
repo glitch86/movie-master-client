@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa6";
 import { IoEyeOff } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
-import toast from "react-hot-toast";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/sdk";
 // import bg from '../assets/SimpleShiny.svg';
 
@@ -13,6 +13,8 @@ import { auth } from "../Firebase/sdk";
 const Login = () => {
   const { setUser, googleSignIn } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
+  const [email, setEmail] = useState();
+  const [pass, setPass] = useState();
 
   const location = useLocation();
   const from = location.state || "/";
@@ -36,6 +38,14 @@ const Login = () => {
       });
   };
 
+  const handleCred = (e) => {
+    e.preventDefault();
+
+    setEmail("user@movie.com");
+    setPass("User#01");
+    console.log("succ");
+  };
+
   // google sign in
   const handleGoogleSignin = () => {
     googleSignIn()
@@ -54,7 +64,7 @@ const Login = () => {
         </div>
         <form
           onSubmit={handleSignin}
-          className="fieldset rounded-box w-xs border border-gray-600 p-4 bg-black/10 backdrop-blur-sm shadow-sm"
+          className="fieldset rounded-box w-xs p-4 backdrop-blur-sm shadow-sm"
         >
           <label className="label text-white">Email</label>
           <input
@@ -62,6 +72,7 @@ const Login = () => {
             className="input"
             name="email"
             placeholder="Email"
+            defaultValue={email}
           />
 
           <div className="relative">
@@ -71,6 +82,7 @@ const Login = () => {
               className="input"
               name="password"
               placeholder="Password"
+              defaultValue={pass}
             />
             <span
               onClick={() => setShowPass(!showPass)}
@@ -84,7 +96,11 @@ const Login = () => {
             <Link>Forget Password</Link>
           </span>
 
+          <button className="btn btn-primary" onClick={handleCred}>
+            Autofill as Demo User
+          </button>
           <button className="btn btn-neutral mt-4">Login</button>
+
           <div className="divider">OR</div>
           <button
             type="button"
