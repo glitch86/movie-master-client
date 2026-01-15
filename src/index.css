@@ -35,7 +35,7 @@
 }
 
 .btn {
-  @apply bg-primary text-black  rounded-lg shadow-none;
+  @apply bg-primary text-black  rounded-lg shadow-none hover:bg-black hover:text-white;
 }
 
 .delete {

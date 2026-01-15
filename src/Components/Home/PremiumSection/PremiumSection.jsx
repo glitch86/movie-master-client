@@ -33,10 +33,10 @@ const PremiumSection = () => {
         </div>
 
         <div className="flex justify-center gap-4">
-          <button className="px-8 py-3 rounded-full bg-red-600 hover:bg-red-700 font-semibold transition">
+          <button className="px-8 py-3 rounded-full btn btn-primary font-semibold transition">
             Get Premium
           </button>
-          <button className="px-8 py-3 rounded-full border border-gray-400 hover:bg-white hover:text-black font-semibold transition">
+          <button className="px-8 py-2 rounded-xl border border-gray-400 hover:bg-white hover:text-black font-semibold transition">
             View Plans
           </button>
         </div>

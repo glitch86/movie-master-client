@@ -118,13 +118,11 @@ const NavBar = () => {
                 className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
               >
                 <li>
-                  <a>Profile</a>
+                  <Link to={"/dashboard/profile"}>Profile</Link>
+                  
                 </li>
                 <li>
                   <Link to={"/dashboard"}>Dashboard</Link>
-                </li>
-                <li>
-                  <Link to={"/movies/add"}>Add Movies</Link>
                 </li>
                 <li>
                   <button className="btn" onClick={handleSignout}>

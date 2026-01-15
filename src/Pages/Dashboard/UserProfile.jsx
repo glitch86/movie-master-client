@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
+import dummy from "../../assets/eumquaecum.webp";
 
 const UserProfile = () => {
   const { user, signOutUser, setUser } = useContext(AuthContext);
@@ -25,7 +26,7 @@ const UserProfile = () => {
       {/* Header */}
       <div className="p-6 flex items-center gap-4">
         <img
-          src={user.photoURL}
+          src={user.photoURL || dummy}
           alt="User Avatar"
           className="w-20 h-20 rounded-full border-4 border-white object-cover"
           referrerPolicy="no-referrer"
@@ -54,13 +55,13 @@ const UserProfile = () => {
 
       {/* Actions */}
       <div className="p-6 border-t border-gray-800 flex gap-3">
-        <button className="flex-1 flex items-center border border-base-200 justify-center gap-2 px-4 py-2 rounded-lg hover:bg-base-200 transition">
+        <button className="flex-1 flex items-center border border-base-200 justify-center gap-2 px-4 py-2 rounded-lg hover:bg-black hover:text-white transition">
           <Edit size={16} />
           Edit Profile
         </button>
 
         <button
-          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-black hover:bg-red-700 transition"
+          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg btn transition"
           onClick={handleSignout}
         >
           <LogOut size={16} />
