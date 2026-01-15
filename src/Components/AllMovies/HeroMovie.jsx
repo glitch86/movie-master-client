@@ -1,6 +1,13 @@
 import React from "react";
 
-const HeroMovie = ({ handleSearch, setSort }) => {
+const HeroMovie = ({
+  handleSearch,
+  setSort,
+  genre,
+  setGenre,
+  language,
+  setLanguage,
+}) => {
   return (
     <div>
       <h1 className="heading py-5">All movies</h1>
@@ -15,7 +22,7 @@ const HeroMovie = ({ handleSearch, setSort }) => {
             />
           </fieldset>
         </div>
-        <div>
+        <div className="flex">
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn m-1">
               Sort
@@ -32,22 +39,35 @@ const HeroMovie = ({ handleSearch, setSort }) => {
               </li>
             </ul>
           </div>
-          {/* <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn m-1">
-              Filter by Category
-            </div>
-            <ul
-              tabIndex="-1"
-              className="dropdown-content menu bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm"
+          <div className="flex gap-3 mb-5">
+            {/* Genre Filter */}
+            <select
+              className="select select-bordered"
+              value={genre}
+              onChange={(e) => setGenre(e.target.value)}
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Item 2</a>
-              </li>
-            </ul>
-          </div> */}
+              <option value="">All Genres</option>
+              <option value="Action">Action</option>
+              <option value="Sci-fi">Sci-fi</option>
+              <option value="Horror">Horror</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Romance">Romance</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Drama">Drama</option>
+            </select>
+            <select
+              className="select select-bordered"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              <option value="">All Languages</option>
+              <option value="English">English</option>
+              <option value="Korean">Korean</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Hindi">Hindi</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>

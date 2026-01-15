@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useData from "../../Hooks/useData";
 import MovieCard from "./MovieCard";
+import axios from "axios";
 
-const MovieCardContainer = ({ searchText, sort }) => {
-  const { datas, loading } = useData(
-    `http://localhost:3000/movies?searchText=${searchText || ""}`
-  );
+const MovieCardContainer = ({ searchText, sort, genre, language }) => {
+  const [datas, setDatas] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/movies", {
+        params: {
+          searchText,
+          genre,
+          language,
+        },
+      })
+      .then((res) => {
+        // console.log(res.data)
+        setDatas(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, [searchText, genre, language]);
+
+  // const { datas, loading } = useData(
+  //   `http://localhost:3000/movies?searchText=${searchText || ""}`
+  // );
 
   const sorted = [...datas];
   if (sort === "new") {
@@ -23,9 +47,13 @@ const MovieCardContainer = ({ searchText, sort }) => {
   }
   return (
     <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-4 gap-5">
-      {sorted.map((data) => (
-        <MovieCard key={data._id} data={data}></MovieCard>
-      ))}
+      {sorted.length > 0 ? (
+        sorted.map((data) => <MovieCard key={data._id} data={data}></MovieCard>)
+      ) : (
+        <div>
+          <h1 className="heading text-gray-400">No results</h1>
+        </div>
+      )}
     </div>
   );
 };

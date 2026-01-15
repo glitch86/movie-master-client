@@ -7,6 +7,8 @@ import HeroMovie from "../Components/AllMovies/HeroMovie";
 const AllMovies = () => {
   const [searchText, setSearchText] = useState();
   const [sort, setSort] = useState();
+  const [genre, setGenre] = useState();
+  const [language, setLanguage] = useState();
   const { datas, loading } = useData("http://localhost:3000/movies");
   const filtered = [...datas].sort((a, b) => b.rating - a.rating).slice(0, 10);
   if (loading) {
@@ -28,20 +30,29 @@ const AllMovies = () => {
   return (
     <div>
       <div className="flex flex-col lg:flex-row gap-4 mx-auto">
-        <div>
+        <div className="flex-1">
           <div>
             <HeroMovie
               handleSearch={handleSearch}
               // handleSort={handleSort}
               setSort={setSort}
+              genre={genre}
+              setGenre={setGenre}
+              language={language}
+              setLanguage={setLanguage}
             ></HeroMovie>
           </div>
-          <div>
-            <MovieCardContainer searchText={searchText} sort={sort}></MovieCardContainer>
+          <div className="w-full">
+            <MovieCardContainer
+              searchText={searchText}
+              sort={sort}
+              genre={genre}
+              language={language}
+            ></MovieCardContainer>
           </div>
         </div>
 
-        <div className="flex-1">
+        <div className="w-fit">
           <h1 className="heading py-5">Top 10</h1>
           <aside className="bg-base-100/50 p-3 rounded-lg">
             {filtered.map((data) => (
