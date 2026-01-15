@@ -15,6 +15,7 @@ import AboutUs from "../Pages/AboutUs";
 import DashboardLayout from "../Layout/DashboardLayout";
 import UserProfile from "../Pages/Dashboard/UserProfile";
 import OverView from "../Pages/Dashboard/OverView";
+import PrivacyTerms from "../Pages/PrivacyTerms";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         Component: AboutUs,
+      },
+      {
+        path: "/privacy&terms",
+        Component: PrivacyTerms,
       },
       {
         path: "/collection",
