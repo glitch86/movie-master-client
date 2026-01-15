@@ -15,7 +15,7 @@ const MovieDetails = () => {
   // console.log(id);
 
   const { datas, loading } = useData(
-    `http://localhost:3000/movies/${id}`
+    `https://movie-master-server-six.vercel.app/movies/${id}`
   );
   // console.log(datas);
   if (loading) {
@@ -49,7 +49,7 @@ const MovieDetails = () => {
     };
     // console.log(movieInfo);
 
-    fetch("http://localhost:3000/watchlist/add", {
+    fetch("https://movie-master-server-six.vercel.app/watchlist/add", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -71,7 +71,7 @@ const MovieDetails = () => {
       navigate("/movies");
     });
   };
-  const owner = addedBy === user.email ? true : false;
+  const owner = addedBy === user?.email ? true : false;
   // console.log(owner);
   return (
     <div>

@@ -6,8 +6,7 @@ import useData from "../../Hooks/useData";
 
 const WatchListCard = ({ data }) => {
   const { datas } = useData(
-    `http://localhost:3000/movies/${data.movie_id}`
-    // `https://movie-master-server-six.vercel.app/movies/${data.movie_id}`
+    `https://movie-master-server-six.vercel.app/movies/${data.movie_id}`
   );
 
   const { _id, title, posterUrl, plotSummary, rating, genre, releaseYear } =

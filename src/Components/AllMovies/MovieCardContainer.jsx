@@ -9,7 +9,7 @@ const MovieCardContainer = ({ searchText, sort, genre, language }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/movies", {
+      .get("https://movie-master-server-six.vercel.app/movies", {
         params: {
           searchText,
           genre,
@@ -27,9 +27,6 @@ const MovieCardContainer = ({ searchText, sort, genre, language }) => {
       });
   }, [searchText, genre, language]);
 
-  // const { datas, loading } = useData(
-  //   `http://localhost:3000/movies?searchText=${searchText || ""}`
-  // );
 
   const sorted = [...datas];
   if (sort === "new") {

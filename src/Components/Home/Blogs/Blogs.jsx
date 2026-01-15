@@ -3,7 +3,7 @@ import useData from "../../../Hooks/useData";
 import BlogCard from "./BlogCard";
 
 const Blogs = () => {
-  const { datas: blogs, loading } = useData("http://localhost:3000/blogs");
+  const { datas: blogs, loading } = useData("https://movie-master-server-six.vercel.app/blogs");
 
 //   console.log(blogs);
   if (loading) {

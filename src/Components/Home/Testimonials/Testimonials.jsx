@@ -5,7 +5,7 @@ import TestimonialCard from "./TestimonialCard";
 
 const Testimonials = () => {
   const { datas: testimonials, loading } = useData(
-    "http://localhost:3000/testimonials"
+    "https://movie-master-server-six.vercel.app/testimonials"
   );
 
   // console.log(testimonials)

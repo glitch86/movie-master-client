@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
       });
       if (result.isConfirmed) {
         const res = await fetch(
-          `http://localhost:3000/movies/${id}`,
+          `https://movie-master-server-six.vercel.app/movies/${id}`,
           {
             method: "DELETE",
             headers: {

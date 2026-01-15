@@ -8,7 +8,7 @@ const MyCollection = () => {
   const { user } = use(AuthContext);
   // console.log(user)
   const { datas, loading } = useData(
-    `http://localhost:3000/my-collection?email=${user.email}`,
+    `https://movie-master-server-six.vercel.app/my-collection?email=${user.email}`,
     {
       authorization: `Bearer ${user.accessToken}`,
     }

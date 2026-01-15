@@ -9,7 +9,7 @@ const AllMovies = () => {
   const [sort, setSort] = useState();
   const [genre, setGenre] = useState();
   const [language, setLanguage] = useState();
-  const { datas, loading } = useData("http://localhost:3000/movies");
+  const { datas, loading } = useData("https://movie-master-server-six.vercel.app/movies");
   const filtered = [...datas].sort((a, b) => b.rating - a.rating).slice(0, 10);
   if (loading) {
     return (

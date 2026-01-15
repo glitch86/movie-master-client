@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 const MovieTable = () => {
   const { user } = useContext(AuthContext);
-  const { datas, loading } = useData("http://localhost:3000/movies");
+  const { datas, loading } = useData("https://movie-master-server-six.vercel.app/movies");
 
   //   console.log(datas)
 

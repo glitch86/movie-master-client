@@ -12,7 +12,7 @@ const Update = () => {
   const { id } = useParams();
   //   console.log(id);
   const { datas, loading } = useData(
-    `http://localhost:3000/movies/${id}`
+    `https://movie-master-server-six.vercel.app/movies/${id}`
   );
   // console.log(datas);
   if (loading) {
@@ -58,7 +58,7 @@ const Update = () => {
       country: form.country.value,
     };
 
-    fetch(`http://localhost:3000/movies/update/${id}`, {
+    fetch(`https://movie-master-server-six.vercel.app/movies/update/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

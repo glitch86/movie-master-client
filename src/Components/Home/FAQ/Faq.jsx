@@ -2,7 +2,7 @@ import React from "react";
 import useData from "../../../Hooks/useData";
 
 const Faq = () => {
-  const { datas, loading } = useData("http://localhost:3000/faqs");
+  const { datas, loading } = useData("https://movie-master-server-six.vercel.app/faqs");
   // console.log(datas);
 
   if (loading) {

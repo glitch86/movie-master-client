@@ -7,7 +7,7 @@ const WatchList = () => {
   const { user } = use(AuthContext);
   // console.log(user)
   const { datas, loading } = useData(
-    `http://localhost:3000/watchlist?email=${user.email}`
+    `https://movie-master-server-six.vercel.app/watchlist?email=${user.email}`
   );
   console.log(datas);
   if (loading) {

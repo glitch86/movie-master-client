@@ -15,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const addUserToDB = (newUser) => {
-    return fetch("http://localhost:3000/users", {
+    return fetch("https://movie-master-server-six.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

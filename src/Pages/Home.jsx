@@ -11,10 +11,10 @@ import Testimonials from "../Components/Home/Testimonials/Testimonials";
 import Blogs from "../Components/Home/Blogs/Blogs";
 import PremiumSection from "../Components/Home/PremiumSection/PremiumSection";
 
-const users = fetch("http://localhost:3000/users").then((res) => res.json());
+const users = fetch("https://movie-master-server-six.vercel.app/users").then((res) => res.json());
 
 const Home = () => {
-  const { datas, loading } = useData("http://localhost:3000/movies");
+  const { datas, loading } = useData("https://movie-master-server-six.vercel.app/movies");
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center">
