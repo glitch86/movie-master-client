@@ -5,11 +5,9 @@ MovieMaster is your ultimate movie discovery and management platform — designe
 live site url: https://movie-masterx86.netlify.app
 
 Screenshots
-<img width="1365" height="653" alt="Screenshot_1" src="https://github.com/user-attachments/assets/09a59a3d-bcb7-4e97-8445-a6ea0278c2fd" />
-<img width="1365" height="637" alt="Screenshot_2" src="https://github.com/user-attachments/assets/f1dc4eb9-ef5b-4a20-83d8-c4bc3e225efd" />
-<img width="1365" height="629" alt="Screenshot_3" src="https://github.com/user-attachments/assets/c497c4c1-eebf-4f73-84bb-bdf19f151448" />
-<img width="1365" height="640" alt="Screenshot_4" src="https://github.com/user-attachments/assets/4fe5bcae-1349-4890-ae5c-8f022c13b97a" />
-
+<img width="1365" height="650" alt="Screenshot_5" src="https://github.com/user-attachments/assets/0b55bdb0-ae16-4c7b-875c-e3e6feb89d49" />
+<img width="1365" height="648" alt="Screenshot_6" src="https://github.com/user-attachments/assets/0a4e6c30-7e75-400a-84b6-9f290cef500a" />
+<img width="1365" height="645" alt="Screenshot_7" src="https://github.com/user-attachments/assets/7cb935f7-1841-4cf8-8e09-b646514a8467" />
 
 # Technologies:
 
